@@ -6,11 +6,14 @@
     <title>John Doe - Personal Portfolio</title>
     <style>
         :root {
-            --primary-color: #0a0a23;
-            --secondary-color: #f0f0f0;
-            --accent-color: #ff7f50;
-            --text-color: #d0d0d0;
-            --bg-color-light: #1b1b32;
+            --primary-color: #00aaff;
+            --secondary-color: #0a192f;
+            --text-color: #ccd6f6;
+            --text-color-secondary: #8892b0;
+            --background-color: #0a192f;
+            --card-background: #112240;
+            --border-color: #233554;
+            --font-family: 'Arial', sans-serif;
         }
 
         * {
@@ -20,8 +23,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--primary-color);
+            font-family: var(--font-family);
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
             scroll-behavior: smooth;
@@ -29,20 +32,20 @@
 
         .container {
             max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
+            margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* Header */
         header {
-            background: var(--primary-color);
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
+            left: 0;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
             padding: 1rem 0;
-            border-bottom: 1px solid var(--bg-color-light);
+            border-bottom: 1px solid var(--border-color);
         }
 
         header .container {
@@ -51,132 +54,134 @@
             align-items: center;
         }
 
-        header #logo {
-            color: var(--secondary-color);
+        .logo {
+            color: var(--primary-color);
             font-size: 1.5rem;
-            text-decoration: none;
             font-weight: bold;
+            text-decoration: none;
         }
 
-        header nav ul {
+        nav ul {
             display: flex;
             list-style: none;
         }
 
-        header nav ul li {
-            margin-left: 20px;
+        nav ul li {
+            margin-left: 1.5rem;
         }
 
-        header nav ul li a {
-            color: var(--secondary-color);
+        nav ul li a {
+            color: var(--text-color);
             text-decoration: none;
             font-size: 1rem;
             transition: color 0.3s ease;
         }
 
-        header nav ul li a:hover {
-            color: var(--accent-color);
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        main {
+            padding-top: 80px; /* Adjust for fixed header */
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 1rem auto 0;
+        }
+
+        p {
+            color: var(--text-color-secondary);
+            margin-bottom: 1rem;
+            max-width: 700px;
         }
 
         /* Hero Section */
         #hero {
-            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding-top: 60px; /* Offset for fixed header */
+            text-align: left;
+            min-height: 90vh;
         }
 
-        #hero .hero-content {
-            max-width: 800px;
+        .hero-content {
+            max-width: 700px;
         }
 
-        #hero h1 {
-            font-size: 3.5rem;
+        .hero-content h1 {
+            color: #e6f1ff;
+            font-size: 4rem;
+        }
+
+        .hero-content .subtitle {
+            font-size: 2rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            color: var(--secondary-color);
         }
-
-        #hero h1 span {
-            color: var(--accent-color);
-        }
-
-        #hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
+        
+        .cta-button {
             display: inline-block;
-            background: var(--accent-color);
-            color: #fff;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
             padding: 0.8rem 1.5rem;
             border-radius: 5px;
             text-decoration: none;
             font-size: 1.1rem;
-            transition: background 0.3s ease;
-            border: none;
-            cursor: pointer;
+            margin-top: 2rem;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .btn:hover {
-            background: #e66a42;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--secondary-color);
-        }
-
-        #about, #projects, #contact {
-            background-color: var(--bg-color-light);
-        }
-
-        #projects {
-             background-color: var(--primary-color);
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
         }
 
         /* About Section */
-        #about .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        #about img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 50%;
-            margin: 0 auto;
-            display: block;
+        #about p {
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Projects Section */
-        #projects .project-grid {
+        .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .project-card {
-            background: var(--bg-color-light);
-            border-radius: 10px;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .project-card img {
@@ -185,100 +190,93 @@
             object-fit: cover;
         }
 
-        .project-info {
+        .project-card-content {
             padding: 1.5rem;
         }
 
-        .project-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
+        .project-card h3 {
+            color: var(--primary-color);
         }
-
-        .project-info p {
-            margin-bottom: 1rem;
-        }
-
-        .project-info a {
-            color: var(--accent-color);
+        
+        .project-links a {
+            color: var(--primary-color);
             text-decoration: none;
+            margin-right: 1rem;
             font-weight: bold;
         }
         
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
         /* Contact Section */
-        #contact-form {
-            max-width: 700px;
+        #contact form {
+            max-width: 600px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        #contact input, #contact textarea {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            font-family: var(--font-family);
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
+        #contact textarea {
+            resize: vertical;
+            min-height: 150px;
         }
         
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: 5px;
-            border: none;
-            background: var(--primary-color);
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: 2px solid var(--accent-color);
+        #contact button {
+            cursor: pointer;
+            width: fit-content;
+            align-self: center;
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 2rem 0;
-            background: var(--bg-color-light);
+            background-color: var(--card-background);
+        }
+        
+        .social-links a {
+            color: var(--text-color-secondary);
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            #hero h1 {
-                font-size: 2.5rem;
-            }
+            h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
 
-            #hero p {
-                font-size: 1.2rem;
-            }
-
-            header .container {
-                flex-direction: column;
-            }
-
-            header nav ul {
-                padding-top: 1rem;
-            }
-
-            #about .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+            nav ul {
+                display: none; /* Simple hiding for demo; a burger menu is better for production */
             }
         }
+
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="container">
-            <a href="#" id="logo">John Doe</a>
+            <a href="#" class="logo">JD</a>
             <nav>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -287,99 +285,99 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hi, I'm John Doe. <span>A Web Developer.</span></h1>
-                <p>I build modern, responsive, and user-friendly web applications.</p>
-                <a href="#projects" class="btn">View My Work</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/300" alt="John Doe">
-                </div>
-                <div class="about-text">
-                    <p>
-                        Hello! I'm John Doe, a passionate web developer with experience in creating dynamic and beautiful web applications. I have a strong foundation in front-end and back-end technologies and a love for clean code and great user experiences.
-                    </p>
-                    <p>
-                        My skills include: HTML, CSS, JavaScript, React, Node.js, and more. I'm a quick learner and always looking to expand my knowledge and skills. When I'm not coding, I enjoy hiking, reading, and exploring new technologies.
-                    </p>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <p style="color: var(--primary-color); margin-bottom: 1.5rem;">Hi, my name is</p>
+                    <h1>John Doe.</h1>
+                    <h1 class="subtitle">I build things for the web.</h1>
+                    <p>I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products.</p>
+                    <a href="#contact" class="cta-button">Get In Touch</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200" alt="Project One">
-                    <div class="project-info">
-                        <h3>Project One</h3>
-                        <p>A short description of the first project. Highlighting the technologies used and the problem it solves.</p>
-                        <a href="#">View Project</a>
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto;">
+                    Hello! I'm John, a passionate software developer with a knack for creating elegant solutions in the least amount of time. I have experience with front-end and back-end technologies, including JavaScript, React, Node.js, and Python. I love learning new things and taking on new challenges. When I'm not coding, you can find me hiking, reading, or exploring new coffee shops.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="project-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 1 Screenshot">
+                        <div class="project-card-content">
+                            <h3>Project Title One</h3>
+                            <p>A brief description of the project, the technologies used, and the problems it solves. This project was built using React and Node.js.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#" target="_blank">GitHub</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200" alt="Project Two">
-                    <div class="project-info">
-                        <h3>Project Two</h3>
-                        <p>A short description of the second project. Highlighting the technologies used and the problem it solves.</p>
-                        <a href="#">View Project</a>
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 2 Screenshot">
+                        <div class="project-card-content">
+                            <h3>Project Title Two</h3>
+                            <p>This project showcases my skills in UI/UX design and front-end development. It's a fully responsive website built with HTML, CSS, and Vanilla JS.</p>
+                             <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#" target="_blank">GitHub</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200" alt="Project Three">
-                    <div class="project-info">
-                        <h3>Project Three</h3>
-                        <p>A short description of the third project. Highlighting the technologies used and the problem it solves.</p>
-                        <a href="#">View Project</a>
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250" alt="Project 3 Screenshot">
+                        <div class="project-card-content">
+                            <h3>Project Title Three</h3>
+                            <p>A full-stack application that does something amazing. Built with a modern tech stack to demonstrate proficiency and skill.</p>
+                             <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#" target="_blank">GitHub</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p style="text-align: center; margin-bottom: 3rem;">I'm currently open to new opportunities. If you have a question or just want to say hi, my inbox is always open!</p>
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 John Doe. All Rights Reserved.</p>
+            <div class="social-links">
+                <!-- Replace # with your actual social media links -->
+                <a href="#" target="_blank" title="GitHub">GH</a>
+                <a href="#" target="_blank" title="LinkedIn">LI</a>
+                <a href="#" target="_blank" title="Twitter">TW</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2024 John Doe. All Rights Reserved.</p>
         </div>
     </footer>
 
