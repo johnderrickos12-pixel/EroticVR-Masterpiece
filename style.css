@@ -1,0 +1,114 @@
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #ffffff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #0000ff;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+}
+
+#generator-form {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+}
+
+#generator-form h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.8em;
+    color: #f0f0f0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    color: #cccccc;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #ff00ff, #0000ff);
+    border: none;
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #0000ff;
+    transform: translateY(-2px);
+}
+
+#video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.video-item {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.video-item video {
+    width: 100%;
+    display: block;
+}
+
+.video-item p {
+    padding: 15px;
+    margin: 0;
+    background-color: #252525;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
