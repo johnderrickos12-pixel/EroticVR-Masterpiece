@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forbidden Desires</title>
+    <title>Forbidden Desires - Visual Edition</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="game-container">
-        <h1 id="scene-title"></h1>
-        <p id="scene-text"></p>
-        <div id="choices-container">
-            <!-- Choices will be dynamically inserted here by JavaScript -->
+    <div id="game-window">
+        <div id="background-container"></div>
+        <div id="character-container">
+            <img id="character-sprite" src="" alt="Character">
+        </div>
+        <div id="ui-container">
+            <div id="textbox-container">
+                <h2 id="scene-title"></h2>
+                <p id="scene-text"></p>
+            </div>
+            <div id="choices-container">
+                <!-- Choices will be dynamically inserted here -->
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
