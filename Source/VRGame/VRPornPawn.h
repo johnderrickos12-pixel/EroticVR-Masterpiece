@@ -1,4 +1,4 @@
-// Copyright Yanna. All rights reserved.
+// VRPornPawn.h
 
 #pragma once
 
@@ -6,9 +6,12 @@
 #include "GameFramework/Pawn.h"
 #include "VRPornPawn.generated.h"
 
-class UCameraComponent;
+// Forward declarations to improve compile times
 class USceneComponent;
+class UCameraComponent;
 class UMotionControllerComponent;
+class UPhysicsHandleComponent;
+class UPrimitiveComponent;
 
 UCLASS()
 class VRGAME_API AVRPornPawn : public APawn
@@ -31,25 +34,38 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	// Root component for VR positioning
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	USceneComponent* VRRoot;
+	// --- Components ---
 
-	// The player's camera
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* Camera;
+	USceneComponent* VRTrackingCenter;
 
-	// Left motion controller
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UCameraComponent* HeadCamera;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UMotionControllerComponent* LeftController;
 
-	// Right motion controller
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UMotionControllerComponent* RightController;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPhysicsHandleComponent* LeftPhysicsHandle;
 
-    // TODO: Add input bindings for grabbing and interaction
-    void GrabLeft();
-    void ReleaseLeft();
-    void GrabRight();
-    void ReleaseRight();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPhysicsHandleComponent* RightPhysicsHandle;
+
+	// --- Grab Logic ---
+
+	void GrabLeft();
+	void ReleaseLeft();
+
+	void GrabRight();
+	void ReleaseRight();
+
+	// --- Configuration ---
+	UPROPERTY(EditDefaultsOnly, Category = "Grab")
+	float GrabRadius = 10.0f; // Radius in cm to check for grabbable objects
+
+	// --- Helper Functions ---
+	UPrimitiveComponent* FindGrabbableComponent(UMotionControllerComponent* Controller);
 };
