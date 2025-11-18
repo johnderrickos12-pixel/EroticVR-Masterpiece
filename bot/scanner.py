@@ -4,6 +4,7 @@ import socket
 import threading
 import paramiko
 import time
+import random
 
 # --- Global State ---
 stop_scanner_event = threading.Event()
@@ -138,4 +139,3 @@ def stop_scanner():
     else:
 
         print("[!] Scanner is not currently running.")
-import random

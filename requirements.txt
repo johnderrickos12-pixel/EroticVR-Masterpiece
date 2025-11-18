@@ -1,0 +1,9 @@
+# Common for both C2 and Bot
+pycryptodome
+
+# Required for the Bot client
+setproctitle
+paramiko
+
+# Required for the C2 server
+cmd2
